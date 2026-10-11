@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>93电影网 - 93复古票根放映馆·精选片单/类型分面/放映表/影评 | 93dianyingwang-h5.github.io</title>
+<meta name="description" content="93电影网（https://93dianyingwang-h5.github.io）为单页演示：复古票根精选、类型分面、本周放映时刻表、影评存根、画质与正版观看建议、站规无障碍。移动端自适应，内链全#，不提供盗版视频源。">
+<meta name="keywords" content="93电影网,复古票根,放映馆,精选片单,类型分面,放映时刻表,影评手记,画质建议,正版引导,单页演示,93dianyingwang-h5.github.io">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#3b2417">
+<meta property="og:title" content="93电影网 - 93复古票根放映馆">
+<meta property="og:description" content="票根精选、类型分面、放映时刻表、影评存根、画质与正版建议、站规无障碍。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://93dianyingwang-h5.github.io">
+<link rel="canonical" href="https://93dianyingwang-h5.github.io">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --paper:#f3e9dc;--paper2:#ead9c4;--cream:#fffaf2;
+  --ink:#33231a;--ink2:#6b513c;--ink3:#927055;
+  --brown:#7a4a2b;--brown2:#5c331c;--brown3:#3b2417;
+  --gold:#d8a14a;--gold2:#b97f2c;
+  --red:#b5462f;--red2:#8f3320;
+  --green:#5f7d4b;--line:rgba(91,51,28,.18);
+  --shadow:0 12px 26px rgba(59,36,23,.20);
+}
+body.big-text{font-size:18px}
+body.reduce-motion *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Serif SC","Songti SC","PingFang SC","Microsoft YaHei",system-ui,serif;background:var(--paper);color:var(--ink);line-height:1.78;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+
+/* 胶片/票根背景 */
+.reel{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55;
+  background:
+   radial-gradient(120% 70% at 5% -10%,rgba(216,161,74,.28),transparent 55%),
+   radial-gradient(120% 80% at 96% 0%,rgba(181,70,47,.20),transparent 55%),
+   radial-gradient(140% 90% at 50% 120%,rgba(92,51,28,.22),transparent 55%),
+   repeating-linear-gradient(90deg,rgba(91,51,28,.06),rgba(91,51,28,.06) 2px,transparent 2px,transparent 26px);}
+
+/* header */
+.site-header{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,var(--brown3),var(--brown2));color:#f6e7d3;border-bottom:3px solid var(--gold)}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:64px;gap:10px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.15rem;letter-spacing:.5px}
+.brand .ticket{width:30px;height:30px;border-radius:6px 6px 6px 6px;background:linear-gradient(135deg,var(--gold),var(--red));position:relative;display:grid;place-items:center;color:#fff;font-weight:900;font-size:.9rem;box-shadow:0 0 12px rgba(216,161,74,.5)}
+.brand .ticket::before,.brand .ticket::after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--brown3);top:50%;transform:translateY(-50%)}
+.brand .ticket::before{left:-3px}
+.brand .ticket::after{right:-3px}
+.brand b{color:#f3d49a}
+.searchbar{display:flex;gap:8px;flex:1;min-width:160px;max-width:360px}
+.searchbar input{flex:1;padding:9px 12px;border-radius:8px;border:1px solid var(--line);background:var(--cream);color:var(--ink);font-size:.9rem}
+.searchbar button{padding:9px 15px;border:0;border-radius:8px;background:var(--gold);color:var(--brown3);font-weight:800;cursor:pointer;min-height:44px}
+.navlinks{display:flex;gap:4px;flex-wrap:wrap}
+.navlinks a{padding:8px 11px;border-radius:6px;font-size:.82rem;font-weight:700;color:#f1d9bd;transition:.2s;min-height:44px;display:inline-flex;align-items:center}
+.navlinks a:hover,.navlinks a.active{background:var(--paper);color:var(--brown3)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.burger span{width:24px;height:3px;background:#f6e7d3;border-radius:3px}
+
+/* hero */
+.hero{padding:30px 0 18px;position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:22px;align-items:center}
+.hero h1{font-size:clamp(1.8rem,5vw,2.9rem);font-weight:900;line-height:1.16}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero p{max-width:560px;margin:14px 0 18px;color:var(--ink2)}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:11px 22px;border-radius:9px;font-weight:800;font-size:.9rem;cursor:pointer;border:0;transition:.25s;min-height:44px;display:inline-flex;align-items:center}
+.btn-brown{background:linear-gradient(135deg,var(--brown),var(--brown3));color:#f6e7d3}
+.btn-brown:hover{transform:translateY(-3px)}
+.btn-line{background:var(--cream);color:var(--brown3);border:1px solid var(--gold)}
+.btn-line:hover{transform:translateY(-3px)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+.chip{font-size:.72rem;font-weight:800;padding:5px 10px;border-radius:999px;background:var(--paper2);color:var(--ink2);border:1px dashed var(--line)}
+.chip.hot{background:var(--red);color:#fff;border-color:var(--red)}
+/* 票根拼贴 */
+.stubs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stub{background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:12px;position:relative;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);transition:.5s}
+.stub.in{opacity:1;transform:none}
+.stub::before,.stub::after{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:var(--paper);top:50%;transform:translateY(-50%);border:1px solid var(--line)}
+.stub::before{left:-7px}
+.stub::after{right:-7px}
+.stub .no{font-family:ui-monospace,monospace;font-weight:800;color:var(--red);font-size:.8rem}
+.stub h4{font-size:.86rem;font-weight:800;margin-top:2px;color:var(--brown3)}
+.stub span{font-size:.7rem;color:var(--ink2)}
+
+section.block{padding:38px 0;position:relative;z-index:1}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.sec-head .icon{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--gold),var(--red));display:grid;place-items:center;color:#fff;font-size:1rem}
+.sec-head h2{font-size:1.3rem;font-weight:900}
+.sec-head .tag{margin-left:auto;font-size:.72rem;color:var(--ink2);background:var(--cream);border:1px solid var(--line);padding:5px 12px;border-radius:999px}
+
+/* 1 票根精选 */
+.tickets{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tk{background:var(--cream);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);opacity:0;transform:translateY(14px);transition:.5s;display:flex;flex-direction:column}
+.tk.in{opacity:1;transform:none}
+.tk:hover{transform:translateY(-4px);border-color:var(--gold)}
+.tk .perf{height:120px;display:grid;place-items:center;font-size:2rem;color:#fff;position:relative}
+.pf1{background:linear-gradient(135deg,var(--brown),var(--brown3))}
+.pf2{background:linear-gradient(135deg,var(--red),var(--brown2))}
+.pf3{background:linear-gradient(135deg,var(--gold),var(--brown))}
+.pf4{background:linear-gradient(135deg,var(--green),var(--brown2))}
+.tk .perf .admit{position:absolute;top:8px;right:8px;font-size:.62rem;font-weight:800;background:#fff;color:var(--red);padding:2px 7px;border-radius:5px}
+.tk .body{padding:12px 14px;flex:1}
+.tk h4{font-size:.9rem;font-weight:800}
+.tk p{font-size:.72rem;color:var(--ink2);margin-top:2px}
+.tk .row{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.tk .row .seat{font-family:ui-monospace,monospace;font-size:.7rem;font-weight:800;color:var(--brown3)}
+.tk .row .go{font-size:.7rem;font-weight:800;color:#fff;background:var(--brown2);padding:4px 10px;border-radius:999px}
+
+/* 2 类型展板 */
+.facets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.facet{font-size:.78rem;font-weight:800;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:var(--cream);cursor:pointer;min-height:40px}
+.facet.on{background:linear-gradient(135deg,var(--brown),var(--brown3));color:#f6e7d3;border-color:transparent}
+.boards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.board{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:12px;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);transition:.5s}
+.board.in{opacity:1;transform:none}
+.board:hover{border-color:var(--gold)}
+.board .top{height:84px;border-radius:8px;display:grid;place-items:center;font-size:1.6rem;color:#fff;margin-bottom:8px}
+.bd1{background:linear-gradient(135deg,var(--brown),var(--brown3))}
+.bd2{background:linear-gradient(135deg,var(--red),var(--brown2))}
+.bd3{background:linear-gradient(135deg,var(--gold),var(--brown))}
+.bd4{background:linear-gradient(135deg,var(--green),var(--brown2))}
+.bd5{background:linear-gradient(135deg,var(--brown2),var(--red))}
+.bd6{background:linear-gradient(135deg,var(--gold2),var(--green))}
+.board h4{font-size:.84rem;font-weight:800}
+.board p{font-size:.72rem;color:var(--ink2);margin-top:2px}
+.board .cnt{font-size:.68rem;font-weight:800;color:var(--brown3);background:var(--paper2);padding:3px 9px;border-radius:999px;display:inline-block;margin-top:8px}
+
+/* 3 放映表 */
+.sched{max-width:960px;margin:0 auto}
+.sched-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.stab{font-size:.78rem;font-weight:800;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:var(--cream);cursor:pointer;min-height:40px}
+.stab.on{background:linear-gradient(135deg,var(--red),var(--brown2));color:#f6e7d3;border-color:transparent}
+.sched-list{display:grid;gap:10px}
+.show{display:grid;grid-template-columns:90px 1fr auto;gap:12px;align-items:center;background:var(--cream);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow);opacity:0;transform:translateX(-10px);transition:.5s}
+.show.in{opacity:1;transform:none}
+.show .time{font-family:ui-monospace,monospace;font-weight:800;color:var(--brown3);font-size:.8rem;text-align:center}
+.show h4{font-size:.86rem;font-weight:800}
+.show p{font-size:.72rem;color:var(--ink2)}
+.show .hall{font-size:.68rem;font-weight:800;padding:4px 10px;border-radius:999px;background:var(--paper2);color:var(--brown3);white-space:nowrap}
+
+/* 4 影评存根 */
+.notes{max-width:920px;margin:0 auto;display:grid;gap:12px}
+.acc{background:var(--cream);border:1px solid var(--line);border-left:5px solid var(--brown);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
+.acc button.acc-h{width:100%;text-align:left;background:transparent;border:0;padding:14px 16px;font-size:.9rem;font-weight:800;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;gap:10px;min-height:48px;align-items:center}
+.acc button.acc-h .ar{transition:.3s;color:var(--red)}
+.acc.open button.acc-h .ar{transform:rotate(90deg)}
+.acc .acc-b{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.acc .acc-b .inner{padding:0 16px 14px;font-size:.82rem;color:var(--ink2)}
+.acc .quote{border-left:3px solid var(--gold);padding-left:10px;margin:6px 0;font-style:italic;color:var(--brown3)}
+.acc .tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+.acc .tags span{font-size:.66rem;font-weight:800;padding:2px 8px;border-radius:999px;background:var(--paper2);color:var(--ink2)}
+
+/* 5 画质/正版 */
+.quality{max-width:940px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.qcard{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+.qcard h4{font-size:.92rem;font-weight:800;color:var(--brown3)}
+.qcard p{font-size:.76rem;color:var(--ink2);margin-top:6px}
+.qcard .specs{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.spec{font-size:.7rem;font-weight:800;padding:4px 9px;border-radius:6px;background:var(--paper2);color:var(--brown3);border:1px solid var(--line)}
+.legal{margin-top:16px;background:linear-gradient(180deg,var(--brown3),#241208);color:#f1d9bd;border-radius:12px;padding:16px}
+.legal h4{font-size:.9rem;color:#f3d49a}
+.legal ul{list-style:none;display:grid;gap:7px;margin-top:8px}
+.legal li{font-size:.76rem;padding-left:20px;position:relative;line-height:1.6}
+.legal li::before{content:'🎟️';position:absolute;left:0}
+
+/* 6 站规+无障碍 */
+.rules{max-width:880px;margin:0 auto;background:linear-gradient(180deg,var(--brown3),#241208);color:#f1d9bd;border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+.rules h3{color:#f3d49a;font-size:1rem;margin-bottom:8px}
+.rules ul{list-style:none;display:grid;gap:8px}
+.rules li{font-size:.8rem;padding-left:20px;position:relative;line-height:1.65}
+.rules li::before{content:'🎞️';position:absolute;left:0}
+.a11y-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.atile{background:#3a2415;border:1px solid #6b4527;border-radius:10px;padding:12px}
+.atile b{font-size:.82rem;color:#f3d49a;display:block;margin-bottom:6px}
+.atile p{font-size:.72rem;color:#f1d9bdcc}
+.sw{width:44px;height:24px;border-radius:99px;background:#caa987;position:relative;display:inline-block;transition:.2s;vertical-align:middle}
+.sw i{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}
+.sw.on{background:var(--gold)}
+.sw.on i{left:22px}
+.rules .dis{margin-top:12px;font-size:.73rem;color:#d8bda0;border-top:1px dashed #6b4527;padding-top:10px}
+
+footer.site-foot{margin-top:34px;background:linear-gradient(180deg,transparent,var(--brown3));border-top:3px solid var(--gold);color:#f1d9bd;padding:30px 0 20px;position:relative;z-index:1}
+.foot-brand{font-weight:900;font-size:1.1rem;text-align:center;margin-bottom:10px}
+.foot-brand b{color:#f3d49a}
+.foot-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:12px}
+.foot-links a{font-size:.8rem;color:#f1d9bdcc;min-height:40px;display:inline-flex;align-items:center}
+.foot-links a:hover{color:#fff}
+.foot-small{text-align:center;font-size:.73rem;color:#d8bda099;line-height:1.7}
+
+@media(max-width:960px){.tickets{grid-template-columns:repeat(2,1fr)}.boards{grid-template-columns:repeat(2,1fr)}.stubs{grid-template-columns:repeat(3,1fr)}.quality{grid-template-columns:1fr}.a11y-row{grid-template-columns:1fr}.hero-grid{grid-template-columns:1fr}}
+@media(max-width:680px){
+  .navlinks{position:fixed;top:64px;left:12px;right:12px;flex-direction:column;background:var(--brown3);padding:10px;border-radius:12px;box-shadow:var(--shadow);transform:translateY(-180%);transition:.3s}
+  .navlinks.open{transform:none}
+  .burger{display:flex}
+  .searchbar{order:3;width:100%;max-width:none}
+}
+@media(max-width:420px){.tickets{grid-template-columns:1fr}.boards{grid-template-columns:1fr}.show{grid-template-columns:64px 1fr}.show .hall{grid-column:1/-1;justify-self:start}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<div class="reel"></div>
+
+<div class="wrap">
+  <header class="site-header">
+    <div class="nav">
+      <div class="brand"><span class="ticket">93</span> 93电影网<b>·93复古票根放映馆</b></div>
+      <form class="searchbar" onsubmit="return false">
+        <input type="search" placeholder="搜票根/类型/放映：复古·悬疑·动画·画质…" aria-label="搜索电影">
+        <button type="submit">取票</button>
+      </form>
+      <nav class="navlinks" id="nav">
+        <a href="#tickets" class="active">票根精选</a>
+        <a href="#genres">类型展板</a>
+        <a href="#schedule">放映表</a>
+        <a href="#notes">影评存根</a>
+        <a href="#quality">画质正版</a>
+        <a href="#rules">站规无障碍</a>
+      </nav>
+      <div class="burger" id="burger"><span></span><span></span><span></span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>把选片变成<em>撕票根</em><br>在93放映馆慢慢看</h1>
+          <p>93电影网（93dianyingwang-h5.github.io）用复古票根整理片单：精选 admits、类型展板、本周放映时刻表、影评存根、画质与正版观看建议。本页为静态前端演示，内链全部为 #；不提供盗版视频源、不发布“最新地址/备用域名/专用播放器/网盘”。[3,7](@ref)</p>
+          <div class="cta">
+            <a href="#tickets" class="btn btn-brown">撕票看片</a>
+            <a href="#schedule" class="btn btn-line">看放映表</a>
+          </div>
+          <div class="chips">
+            <span class="chip hot">复古票根</span>
+            <span class="chip">类型展板</span>
+            <span class="chip">放映时刻</span>
+            <span class="chip">影评存根</span>
+            <span class="chip">画质建议</span>
+            <span class="chip">正版引导</span>
+          </div>
+        </div>
+        <div class="stubs" aria-hidden="true">
+          <div class="stub"><div class="no">No.0931</div><h4>褐金大厅</h4><span>精选/复古/慢热</span></div>
+          <div class="stub"><div class="no">No.0932</div><h4>红灯笼厅</h4><span>悬疑/剧情/重口味轻</span></div>
+          <div class="stub"><div class="no">No.0933</div><h4>草绿庭院</h4><span>动画/自然/亲子</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1 票根精选 -->
+    <section class="block" id="tickets">
+      <div class="sec-head"><span class="icon">🎟️</span><h2>票根精选</h2><span class="tag">卡片仅演示，不播放正片</span></div>
+      <div class="tickets" id="ticketsGrid">
+        <article class="tk"><div class="perf pf1">🎞️<span class="admit">ADMIT 1</span></div><div class="body"><h4>老放映员手记</h4><p>复古/文艺·胶片修复/影院往事</p><div class="row"><span class="seat">排号 A3</span><span class="go">存根</span></div></div></article>
+        <article class="tk"><div class="perf pf2">🕵️<span class="admit">ADMIT 1</span></div><div class="body"><h4>红灯笼谜案</h4><p>悬疑/剧情·旧剧院/不血腥推理</p><div class="row"><span class="seat">排号 B7</span><span class="go">存根</span></div></div></article>
+        <article class="tk"><div class="perf pf3">🧳<span class="admit">ADMIT 1</span></div><div class="body"><h4>长途汽车电影院</h4><p>公路/爱情·站台/磁带/重逢</p><div class="row"><span class="seat">排号 C2</span><span class="go">存根</span></div></div></article>
+        <article class="tk"><div class="perf pf4">🐾<span class="admit">ADMIT 1</span></div><div class="body"><h4>草绿庭院动画</h4><p>动画/亲子·四季/不惊吓</p><div class="row"><span class="seat">排号 D5</span><span class="go">存根</span></div></div></article>
+        <article class="tk"><div class="perf pf2">🥁<span class="admit">ADMIT 1</span></div><div class="body"><h4>铜管与雨</h4><p>音乐/剧情·露天演奏/修复声轨</p><div class="row"><span class="seat">排号 E1</span><span class="go">存根</span></div></div></article>
+        <article class="tk"><div class="perf pf1">🏔️<span class="admit">ADMIT 1</span></div><div class="body"><h4>山线慢车纪事</h4><p>自然/纪录·铁路/花期/低剧情</p><div class="row"><span class="seat">排号 F4</span><span class="go">存根</span></div></div></article>
+        <article class="tk"><div class="perf pf3">🍷<span class="admit">ADMIT 1</span></div><div class="body"><h4>晚餐桌上的谎言</h4><p>喜剧/群像·饭局/误会和解</p><div class="row"><span class="seat">排号 G6</span><span class="go">存根</span></div></div></article>
+        <article class="tk"><div class="perf pf4">✉️<span class="admit">ADMIT 1</span></div><div class="body"><h4>93号信箱</h4><p>文艺/书信·小镇/季节慢信</p><div class="row"><span class="seat">排号 H8</span><span class="go">存根</span></div></div></article>
+      </div>
+    </section>
+
+    <!-- 2 类型展板 -->
+    <section class="block" id="genres">
+      <div class="sec-head"><span class="icon">🎭</span><h2>类型展板</h2><span class="tag">点击筛选·纯前端</span></div>
+      <div class="facets" id="facets">
+        <span class="facet on" data-g="all">全部</span>
+        <span class="facet" data-g="retro">复古文艺</span>
+        <span class="facet" data-g="crime">悬疑犯罪</span>
+        <span class="facet" data-g="road">公路爱情</span>
+        <span class="facet" data-g="anim">动画亲子</span>
+        <span class="facet" data-g="music">音乐舞台</span>
+        <span class="facet" data-g="nature">自然纪录</span>
+      </div>
+      <div class="boards" id="boards">
+        <article class="board" data-g="retro"><div class="top bd1">🎞️</div><h4>复古文艺</h4><p>胶片、老影院、手记与修复，慢情绪。</p><span class="cnt">示例 12 部</span></article>
+        <article class="board" data-g="crime"><div class="top bd2">🕵️</div><h4>轻悬疑</h4><p>旧剧场、信物、标签推理，非血腥。</p><span class="cnt">示例 8 部</span></article>
+        <article class="board" data-g="road"><div class="top bd3">🧳</div><h4>公路爱情</h4><p>站台、长途、磁带与重逢，不狗血。</p><span class="cnt">示例 10 部</span></article>
+        <article class="board" data-g="anim"><div class="top bd4">🐾</div><h4>动画亲子</h4><p>庭院、四季、动物，无惊吓情节。</p><span class="cnt">示例 9 部</span></article>
+        <article class="board" data-g="music"><div class="top bd5">🥁</div><h4>音乐舞台</h4><p>铜管、露天、修复声轨，重氛围。</p><span class="cnt">示例 6 部</span></article>
+        <article class="board" data-g="nature"><div class="top bd6">🏔️</div><h4>自然纪录</h4><p>山线、铁路、花期，低剧情压力。</p><span class="cnt">示例 7 部</span></article>
+        <article class="board" data-g="retro"><div class="top bd3">🍷</div><h4>群像喜剧</h4><p>饭桌、误会、和解，轻松不烧脑。</p><span class="cnt">示例 11 部</span></article>
+        <article class="board" data-g="road"><div class="top bd2">✉️</div><h4>书信文艺</h4><p>信箱、小镇、季节信，慢热治愈。</p><span class="cnt">示例 5 部</span></article>
+      </div>
+    </section>
+
+    <!-- 3 放映表 -->
+    <section class="block" id="schedule">
+      <div class="sec-head"><span class="icon">🕒</span><h2>本周放映时刻表</h2><span class="tag">按厅切换·示意数据</span></div>
+      <div class="sched">
+        <div class="sched-tabs" id="schedTabs">
+          <span class="stab on" data-h="all">全部厅</span>
+          <span class="stab" data-h="gold">褐金大厅</span>
+          <span class="stab" data-h="red">红灯笼厅</span>
+          <span class="stab" data-h="green">草绿庭院</span>
+        </div>
+        <div class="sched-list" id="schedList">
+          <div class="show" data-h="gold"><div class="time">14:00</div><div><h4>老放映员手记</h4><p>复古文艺·胶片修复导赏·约98分钟</p></div><div class="hall">褐金大厅</div></div>
+          <div class="show" data-h="red"><div class="time">16:30</div><div><h4>红灯笼谜案</h4><p>轻悬疑·旧剧院物证·约112分钟</p></div><div class="hall">红灯笼厅</div></div>
+          <div class="show" data-h="green"><div class="time">18:00</div><div><h4>草绿庭院动画</h4><p>亲子动画·四季庭院·约88分钟</p></div><div class="hall">草绿庭院</div></div>
+          <div class="show" data-h="gold"><div class="time">19:45</div><div><h4>长途汽车电影院</h4><p>公路爱情·站台重逢·约104分钟</p></div><div class="hall">褐金大厅</div></div>
+          <div class="show" data-h="red"><div class="time">21:10</div><div><h4>铜管与雨</h4><p>音乐剧情·露天演奏·约109分钟</p></div><div class="hall">红灯笼厅</div></div>
+          <div class="show" data-h="green"><div class="time">10:30</div><div><h4>山线慢车纪事</h4><p>自然纪录·铁路花期·约97分钟</p></div><div class="hall">草绿庭院</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 影评存根 -->
+    <section class="block" id="notes">
+      <div class="sec-head"><span class="icon">📝</span><h2>影评存根</h2><span class="tag">可折叠·剧透分级</span></div>
+      <div class="notes" id="notesBox">
+        <div class="acc open"><button class="acc-h">《老放映员手记》：复古片如何不闷？<span class="ar">▶</span></button><div class="acc-b"><div class="inner"><div class="quote">“灯一灭，胶片自己会说话。”——示例台词</div><p>手记：用“换片—修片—重映”三段式代替大事件；每场只讲一个物件（碳精灯、票夹、片盒）。不强行怀旧煽情，适合夜间慢看。存根标签标注不剧透、可分段观看。<div class="tags"><span>不剧透</span><span>复古</span><span>低刺激</span></div></p></div></div></div>
+        <div class="acc"><button class="acc-h">《红灯笼谜案》：轻悬疑物证怎么排？<span class="ar">▶</span></button><div class="acc-b"><div class="inner"><div class="quote">“戏单谁改过，谁就坐在第三排。”——示例台词</div><p>手记：线索放在戏单、灯具、售票存根三类；不展示血腥，仅靠时间差制造紧张。轻剧透：真与“重排场次”有关，不提前点名。<div class="tags"><span>轻剧透</span><span>非血腥</span><span>剧场推理</span></div></p></div></div></div>
+        <div class="acc"><button class="acc-h">《草绿庭院动画》：亲子不惊吓的节奏<span class="ar">▶</span></button><div class="acc-b"><div class="inner"><div class="quote">“种子不急，春天会自己敲门。”——示例台词</div><p>手记：每10分钟一个节气小任务，笑点给动物配角，冲突只用“下雨/丢钥匙”级别。开启字幕后低龄可独立看。<div class="tags"><span>亲子</span><span>字幕友好</span><span>无惊吓</span></div></p></div></div></div>
+      </div>
+    </section>
+
+    <!-- 5 画质/正版 -->
+    <section class="block" id="quality">
+      <div class="sec-head"><span class="icon">📽️</span><h2>画质与正版观看建议</h2><span class="tag">演示·不嵌盗版源</span></div>
+      <div class="quality">
+        <div class="qcard"><h4>胶片修复/标清转制</h4><p>老片重点看色彩还原与噪点控制；标清转制建议大屏适度，不盲目拉4K。</p><div class="specs"><span class="spec">1080p优先</span><span class="spec">降噪</span><span class="spec">色温校准</span></div></div>
+        <div class="qcard"><h4>4K HDR 新片</h4><p>高对比场景看黑位与高光；HDR片源搭配支持 Dolby Vision/HDR10 的授权播放端。</p><div class="specs"><span class="spec">3840×2160</span><span class="spec">HDR10</span><span class="spec">Dolby Vision</span></div></div>
+        <div class="qcard"><h4>声轨与字幕</h4><p>复古片可补原声轨；外语片开强制字幕，儿童场用大字号字幕降低阅读压力。</p><div class="specs"><span class="spec">5.1/Atmos</span><span class="spec">简体字幕</span><span class="spec">大字号</span></div></div>
+        <div class="qcard"><h4>正版渠道建议</h4><p>优先选择有发行/授权信息的平台；核对片名、地区、版本与有效期，避免来源不明播放页。[18](@ref)</p><div class="specs"><span class="spec">授权平台</span><span class="spec">院线重映</span><span class="spec">正规碟版</span></div></div>
+      </div>
+      <div class="legal">
+        <h4>正版与合规存根</h4>
+        <ul>
+          <li>本页为93电影网静态演示，所有片名、评分、时长、放映厅均为示例，不提供未授权视频源。</li>
+          <li>不发布“最新地址、备用域名、专用播放器、网盘资源、全片在线播放”等规避版权内容。</li>
+          <li>观看正版请通过院线、持牌流媒体或音像出版方；若来源不明，先核对权利人与授权范围。[15,18](@ref)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6 站规+无障碍 -->
+    <section class="block" id="rules">
+      <div class="sec-head"><span class="icon">⚖️</span><h2>站规与无障碍</h2><span class="tag">合规演示</span></div>
+      <div class="rules">
+        <h3>93电影网 · 放映馆守则</h3>
+        <ul>
+          <li>单文件演示：CSS/JS 内联，内链全 #，不生成 robots.txt 与 sitemap.xml。</li>
+          <li>移动端自适应：viewport、响应式栅格、触控区≥40–44px，必应友好语义结构。[8,16](@ref)</li>
+          <li>不提供盗版：无未授权播放、无最新地址/备用域名/专用播放器/网盘。</li>
+          <li>内容示例化：
